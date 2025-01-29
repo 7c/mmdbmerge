@@ -17,13 +17,14 @@ $ bin/mmdbmerge -h
 
 ## Usage
 ```bash
-$ mmdbmerge input1.mmdb input2.mmdb [input3.mmdb ...] -o combined.mmdb [--debug]
+$ mmdbmerge a.mmdb b.mmdb [input3.mmdb ...] -o combined.mmdb [--debug]
 2025/01/29 18:31:18 VALID: Valid file: demo/a.mmdb
 2025/01/29 18:31:18 VALID: Valid file: demo/b.mmdb
 2025/01/29 18:31:18 Stats: demo/a.mmdb networks: 2166 (IPs: 681413, skipped: 0)
 2025/01/29 18:31:18 Stats: demo/b.mmdb networks: 2166 (IPs: 681413, skipped: 0)
 2025/01/29 18:31:18 Final Stats: Total networks: 4332 (IPs: 1362826, skipped: 0)
 2025/01/29 18:31:18 Output: combined.mmdb contains 906 networks (IPs: 681413)
+
 % mmdbimport -v combined.mmdb 
 MMDB file: combined.mmdb
   Build Timestamp: 2025-01-29T18:31:18-05:00
