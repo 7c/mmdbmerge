@@ -8,6 +8,9 @@ go clean -cache
 go install github.com/7c/mmdbmerge@v0.0.1
 ```
 
+## Release
+You can download the release from [releases folder](https://github.com/7c/mmdbmerge/releases).
+
 ## Build
 If you want to build this tool from source, you can use `make` command.
 ```bash
