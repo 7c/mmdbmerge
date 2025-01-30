@@ -5,7 +5,7 @@ A tool to merge multiple MaxMind DB files into a single file. It will skip all d
 Easy way to install this tool is to use `go install` command.
 ```bash
 go clean -cache
-go install github.com/7c/mmdbmerge@v0.0.1
+go install github.com/7c/mmdbmerge@v0.0.3
 ```
 
 ## Release

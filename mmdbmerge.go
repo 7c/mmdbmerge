@@ -157,8 +157,8 @@ func main() {
 
 	log.Printf("%s: Total networks: %d (IPs: %d, skipped: %d)",
 		successColor("Final Stats"), totalNetworks, totalIPs, totalSkipped)
-	log.Printf("%s: %s contains %d networks (IPs: %d)",
-		successColor("Output"), *outputFile, outputNetworks, outputIPs)
+	log.Printf("%s: %s contains %d networks (IPs: %d, size: %.2f KB)",
+		successColor("Output"), *outputFile, outputNetworks, outputIPs, getFileSize(*outputFile))
 
 	// Exit with status 0 on success
 	os.Exit(0)
@@ -203,6 +203,15 @@ func countIPs(ipnet *net.IPNet) uint64 {
 		return 0 // Avoid overflow for very large networks
 	}
 	return 1 << uint(bits-ones)
+}
+
+// Add helper function to get file size in KB
+func getFileSize(path string) float64 {
+	info, err := os.Stat(path)
+	if err != nil {
+		return 0
+	}
+	return float64(info.Size()) / 1024
 }
 
 func processFile(writer *mmdbwriter.Tree, fullPath string, debug bool) (fileStats, error) {
@@ -252,8 +261,8 @@ func processFile(writer *mmdbwriter.Tree, fullPath string, debug bool) (fileStat
 		}
 	}
 
-	log.Printf("%s: %s networks: %d (IPs: %d, skipped: %d)",
-		infoColor("Stats"), fullPath, stats.networks, stats.ips, stats.skipped)
+	log.Printf("%s: %s networks: %d (IPs: %d, skipped: %d, size: %.2f KB)",
+		infoColor("Stats"), fullPath, stats.networks, stats.ips, stats.skipped, getFileSize(fullPath))
 
 	return stats, nil
 }
